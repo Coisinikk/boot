@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjy.dao.UserDao">
+    <!--登录验证-->
+    <select id="login" resultType="java.lang.Integer">
+        select count(*) from uav_users where userName=#{userName} and password=#{password}
+    </select>
+    <!--用户注册-->
+    <insert id="userAdd">
+        insert into uav_users values(#{userId},#{userName},#{password})
+    </insert>
+    <!--查询用户信息-->
+    <select id="userFindAll" resultType="com.zjy.entity.User">
+        select * from uav_users order by userId
+    </select>
+    <select id="userFindById" resultType="com.zjy.entity.User">
+        select * from uav_users where userId=#{userId}
+    </select>
+    <!--更新用户信息-->
+    <!--<update id="userUpdate">
+        update uav_users set userName=#{userName},password=#{password} where userId=#{userId}
+    </update>-->
+    <!--删除用户-->
+    <delete id="userDelete" parameterType="java.lang.Integer">
+        delete from uav_users where userId=#{userId}
+    </delete>
+
+</mapper>

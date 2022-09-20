@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjy.dao.DriverDao">
+    <!--添加驾驶员-->
+    <insert id="driverAdd">
+        insert into driver values(#{driver_id},#{driver_unit},#{driver_name},#{driver_phone},#{driver_card},#{driver_idcard},#{driver_type})
+    </insert>
+
+    <!--查询驾驶员-->
+    <select id="driverFindAll" resultType="com.zjy.entity.Driver">
+        select * from driver order by driver_id
+    </select>
+
+    <!--删除驾驶员-->
+    <delete id="driverDelete" parameterType="java.lang.Integer">
+        delete from driver where driver_id=#{driver_id}
+    </delete>
+
+</mapper>
